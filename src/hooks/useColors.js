@@ -13,6 +13,12 @@ export const useColors = () => {
     setColorsList((colors) => [color, ...colors]);
   };
 
+  const handleClickClearColors = () => {  
+    setcolor("#f2f2f2");
+    setColorsList([]);
+    localStorage.removeItem("colorsList");
+  }
+
   useEffect(() => {
     localStorage.setItem("colorsList", JSON.stringify(colorsList))
   }, [colorsList])
@@ -24,6 +30,7 @@ export const useColors = () => {
   return {
     handleSubmitSaveColor,
     handleChangeColor,
+    handleClickClearColors,
     color,
     colorsList
   };
